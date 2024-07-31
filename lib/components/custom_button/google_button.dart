@@ -8,10 +8,12 @@ class GoogleButton extends StatelessWidget {
     super.key,
     required this.size,
     required this.onTap,
+    this.isSignIn=true
   });
 
   final Size size;
   final VoidCallback onTap;
+  final bool isSignIn;
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +31,8 @@ class GoogleButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset("assets/images/google.png",width: 50,height: 50,fit: BoxFit.fitHeight,),
-              const CustomText(
-                text: "Sign In with Google",
+               CustomText(
+                text: isSignIn ? "Sign In with Google":"Sign Up with Google",
                 fontsize: 14,
                 fontWeight: FontWeight.w300,
               ),

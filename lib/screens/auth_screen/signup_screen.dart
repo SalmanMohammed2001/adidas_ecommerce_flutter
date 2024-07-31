@@ -1,5 +1,4 @@
-import 'package:adidas_ecommerce/screens/auth_screen/forgot_password.dart';
-import 'package:adidas_ecommerce/screens/auth_screen/signup_screen.dart';
+import 'package:adidas_ecommerce/screens/auth_screen/signIn_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,16 +7,17 @@ import '../../components/custom_button/google_button.dart';
 import '../../components/custom_test/custom_text.dart';
 import '../../components/custom_text_field/custom_text_field1.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<SignUpScreen> createState() => _SignInScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _SignInScreenState extends State<SignUpScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   fontWeight: FontWeight.w600,
                 ),
                 const CustomText(
-                  text: "Please fill Your  details to access your account",
+                  text: "create New  Account With Your Email and Password",
                   fontsize: 15,
                   fontWeight: FontWeight.w300,
                 ),
@@ -61,40 +61,24 @@ class _SignInScreenState extends State<SignInScreen> {
                   controller: passwordController,
                 ),
                 const SizedBox(
+                  height: 15,
+                ),
+                CustomTextField1(
+                  label: "confirm Password",
+                  prefixIcon: Icons.password,
+                  isPassword: true,
+                  controller: confirmPasswordController,
+                ),
+                const SizedBox(
                   height: 10,
                 ),
-                Row(
-                  children: [
-                    Checkbox(
-                      value: false,
-                      onChanged: (value) {},
-                    ),
-                    const CustomText(
-                      text: "Remember me",
-                      fontsize: 14,
-                      fontWeight: FontWeight.w300,
-                    ),
-                    const Spacer(),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const ForgotPassword()));
-                      },
-                      child: const CustomText(
-                        text: "Forgot Password",
-                        fontsize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.orange,
-                      ),
-                    ),
-                  ],
-                ),
+
                 const SizedBox(
                   height: 15,
                 ),
                 CustomButton1(
                   size: size,
-                  text: "Sign In",
+                  text: "Sign Up",
                   bgColor: Colors.orange.shade700,
                   onTap: () {},
                 ),
@@ -103,25 +87,26 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
                 GoogleButton(
                   size: size,
+                  isSignIn: false,
                   onTap: () {},
                 ),
                 const SizedBox(
                   height: 15,
                 ),
-                 InkWell(
-                   onTap: () {
-                     Navigator.push(context,
-                         MaterialPageRoute(builder: (context) => const SignUpScreen()));
-                   },
-                   child: Center(
-                     child: Text.rich(TextSpan(text: "Don't have an account ? ", children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context,
+                        MaterialPageRoute(builder: (context) => const SignInScreen()));
+                  },
+                  child: Center(
+                    child: Text.rich(TextSpan(text: "Already Have an Account ? ", children: [
                       TextSpan(
-                          text: "SignUp",
+                          text: "Sign In",
                           style: TextStyle(
                               color: Colors.orange.shade800, fontWeight: FontWeight.bold))
-                                   ])),
-                   ),
-                 )
+                    ])),
+                  ),
+                )
               ],
             ),
           ),
