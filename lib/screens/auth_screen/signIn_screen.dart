@@ -1,6 +1,6 @@
 import 'package:adidas_ecommerce/screens/auth_screen/forgot_password.dart';
 import 'package:adidas_ecommerce/screens/auth_screen/signup_screen.dart';
-import 'package:adidas_ecommerce/screens/home_screen/home_screen.dart';
+import 'package:adidas_ecommerce/screens/home_screen/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
