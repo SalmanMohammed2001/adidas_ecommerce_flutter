@@ -1,5 +1,6 @@
 import 'package:adidas_ecommerce/screens/auth_screen/forgot_password.dart';
 import 'package:adidas_ecommerce/screens/auth_screen/signup_screen.dart';
+import 'package:adidas_ecommerce/screens/home_screen/cart/cart_screen.dart';
 import 'package:adidas_ecommerce/screens/home_screen/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -98,7 +99,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   text: "Sign In",
                   bgColor: Colors.orange.shade700,
                   onTap: () {
-                    CustomNavigator.goTo(context, const HomeScreen());
+                    CustomNavigator.goTo(context, const CartScreen());
                   },
                 ),
                 const SizedBox(
