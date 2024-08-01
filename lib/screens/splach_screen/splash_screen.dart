@@ -1,4 +1,5 @@
 import 'package:adidas_ecommerce/screens/auth_screen/signIn_screen.dart';
+import 'package:adidas_ecommerce/utils/CustomNavigator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,8 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(
       const Duration(seconds: 3),
       () {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const SignInScreen()));
+        CustomNavigator.goTo(context, const SignInScreen());
       },
     );
   }

@@ -6,6 +6,7 @@ import '../../components/custom_button/custom_button1.dart';
 import '../../components/custom_button/google_button.dart';
 import '../../components/custom_test/custom_text.dart';
 import '../../components/custom_text_field/custom_text_field1.dart';
+import '../../utils/CustomNavigator.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -95,8 +96,7 @@ class _SignInScreenState extends State<SignUpScreen> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.pop(context,
-                        MaterialPageRoute(builder: (context) => const SignInScreen()));
+                    CustomNavigator.goTo(context, const SignUpScreen());
                   },
                   child: Center(
                     child: Text.rich(TextSpan(text: "Already Have an Account ? ", children: [

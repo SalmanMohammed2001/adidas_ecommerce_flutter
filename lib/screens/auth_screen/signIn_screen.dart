@@ -1,5 +1,6 @@
 import 'package:adidas_ecommerce/screens/auth_screen/forgot_password.dart';
 import 'package:adidas_ecommerce/screens/auth_screen/signup_screen.dart';
+import 'package:adidas_ecommerce/screens/home_screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,6 +8,7 @@ import '../../components/custom_button/custom_button1.dart';
 import '../../components/custom_button/google_button.dart';
 import '../../components/custom_test/custom_text.dart';
 import '../../components/custom_text_field/custom_text_field1.dart';
+import '../../utils/CustomNavigator.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -77,8 +79,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     const Spacer(),
                     InkWell(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const ForgotPassword()));
+                        CustomNavigator.goTo(context, const ForgotPassword());
                       },
                       child: const CustomText(
                         text: "Forgot Password",
@@ -96,7 +97,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   size: size,
                   text: "Sign In",
                   bgColor: Colors.orange.shade700,
-                  onTap: () {},
+                  onTap: () {
+                    CustomNavigator.goTo(context, const HomeScreen());
+                  },
                 ),
                 const SizedBox(
                   height: 6,
@@ -110,8 +113,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
                  InkWell(
                    onTap: () {
-                     Navigator.push(context,
-                         MaterialPageRoute(builder: (context) => const SignUpScreen()));
+                     CustomNavigator.goTo(context, const SignUpScreen());
                    },
                    child: Center(
                      child: Text.rich(TextSpan(text: "Don't have an account ? ", children: [
