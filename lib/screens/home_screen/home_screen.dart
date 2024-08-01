@@ -19,6 +19,14 @@ class _HomeScreenState extends State<HomeScreen> {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiVjqqyz2Jxwg-o4tuAxn9tLjvI7mrgG3z3w&s",
   ];
 
+  final List<dynamic> icons = [
+    Icons.ac_unit,
+    Icons.account_balance_sharp,
+    Icons.car_rental,
+    Icons.shopping_cart_rounded,
+    Icons.domain_verification_outlined,
+  ];
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
@@ -26,59 +34,138 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CircleAvatar(
-                    backgroundColor: Colors.orange,
-                    child: Icon(
-                      Icons.menu,
-                      color: Colors.white,
+          padding: const EdgeInsets.all(8.0),
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.orange,
+                      child: Icon(
+                        Icons.menu,
+                        color: Colors.white,
+                      ),
+                    ),
+                    CircleAvatar(
+                      backgroundColor: Colors.orange,
+                      child: Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const CustomText(
+                  text: "Hello Salman",
+                  fontWeight: FontWeight.w500,
+                ),
+                CustomText(
+                  text: "Let's Start shopping",
+                  fontsize: 15,
+                  color: Colors.grey.shade500,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                CarouselSlider(
+                  options: CarouselOptions(height: 180.0, autoPlay: true),
+                  items: images.map((i) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
+                            width: MediaQuery.of(context).size.width,
+                            margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.amber,
+                                image: DecorationImage(
+                                    image: NetworkImage(i), fit: BoxFit.cover)));
+                      },
+                    );
+                  }).toList(),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const CustomText(
+                      text: "Top Categories",
+                      fontWeight: FontWeight.w800,
+                    ),
+                    CustomText(
+                      text: "See All",
+                      color: Colors.orange.shade700,
+                      fontsize: 16,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  child: Row(
+                    children: List.generate(
+                      icons.length,
+                      (index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            width: 70,
+                            height: 70,
+                            decoration: BoxDecoration(
+                              color: index == 0
+                                  ? Colors.orange
+                                  : Colors.grey.shade300,
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                  color: index == 0
+                                      ? Colors.orange.shade700
+                                      : Colors.grey.shade400),
+                            ),
+                            child: Icon(
+                              icons[index],
+                              color: index == 0
+                                  ? Colors.white
+                                  : Colors.grey.shade600,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ),
-                  CircleAvatar(
-                    backgroundColor: Colors.orange,
-                    child: Icon(
-                      Icons.search,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const CustomText(
-                text: "Hello Salman",
-                fontWeight: FontWeight.w500,
-              ),
-              CustomText(
-                text: "Let's Start shopping",
-                fontsize: 15,
-                color: Colors.grey.shade500,
-              ),SizedBox(height: 10,),
-              CarouselSlider(
-                options: CarouselOptions(height: 180.0, autoPlay: true),
-                items: images.map((i) {
-                  return Builder(
-                    builder: (BuildContext context) {
-                      return Container(
-                          width: MediaQuery.of(context).size.width,
-                          margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                              color: Colors.amber,
-                              image: DecorationImage(
-                                  image: NetworkImage(i), fit: BoxFit.cover)));
-                    },
-                  );
-                }).toList(),
-              )
-            ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                 shrinkWrap: true,
+                  itemCount: 6,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      crossAxisCount: 2),
+                  itemBuilder: (context, index) {
+                    return Container(
+                      height: 100,
+                      color: Colors.blue,
+                    );
+                  },
+                )
+              ],
+            ),
           ),
         ),
       ),
