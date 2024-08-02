@@ -1,4 +1,4 @@
-package com.example.adidas_ecommerce
+package lk.ce.adidas
 
 import io.flutter.embedding.android.FlutterActivity
 

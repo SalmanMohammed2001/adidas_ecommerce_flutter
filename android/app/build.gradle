@@ -1,8 +1,14 @@
 plugins {
     id "com.android.application"
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
+    // END: FlutterFire Configuration
     id "kotlin-android"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
+
+
+    
 }
 
 def localProperties = new Properties()
@@ -24,7 +30,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace = "com.example.adidas_ecommerce"
+    namespace = "lk.ce.adidas"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -35,13 +41,14 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.adidas_ecommerce"
+        applicationId = "lk.ce.adidas"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
+       multiDexEnabled true
     }
 
     buildTypes {
@@ -55,4 +62,8 @@ android {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+  implementation 'com.android.support:multidex:1.0.3'
 }
